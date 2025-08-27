@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import Blog from '../Blog/Blog';
 
 
-const Blogs = () => {
+const Blogs = ({handleBookMark}) => {
 
   const [blogs,setBlogs] = useState([])
 
@@ -11,14 +11,16 @@ const Blogs = () => {
      .then(res => res.json())
      .then(data=>setBlogs(data))
 },[])
-console.log(blogs);
+// console.log(blogs);
 
   return (
     <div>
       
       <div className='all-blogs grid grid-cols-2'>
         {
-          blogs.map((blog)=> <Blog blog={blog}></Blog>)
+          blogs.map((blog)=> 
+          <Blog blog={blog} 
+          handleBookMark={handleBookMark}></Blog>)
         }
       </div>
     </div>
